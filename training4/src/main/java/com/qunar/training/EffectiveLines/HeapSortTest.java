@@ -1,5 +1,8 @@
-package main.java.com.qunar.training.EffectiveLines;
+package com.qunar.training.EffectiveLines;
 
+/**
+ * 测试用例，统计该文件的行数
+ */
 public class HeapSortTest {
 
     public static void main(String[] args) {

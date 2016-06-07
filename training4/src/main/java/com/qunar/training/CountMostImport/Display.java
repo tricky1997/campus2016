@@ -4,9 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 按照题目要求显示结果，因为输入参数是List所以可以使用不同的方式显示结果
  * Created by shining.cui on 2016/6/7.
  */
 public class Display {
+    /**
+     *
+     * @param list 排序过的map，key为类名,value为出现次数
+     */
     public static void show(List<Map.Entry<String, Integer>> list) {
         if (list.size() > 0) {
             Map.Entry<String, Integer> firstClass = list.get(0);

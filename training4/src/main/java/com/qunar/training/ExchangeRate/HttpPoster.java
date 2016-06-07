@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 通过apache-http包实现的模拟post访问请求工具
  * 任意一天的汇率可以从中国银行官网上查询，传入货币代号，开始日期，结束日期即可获得改天汇率的页面
  * <p/>
  * Created by shining.cui on 2016/6/5.

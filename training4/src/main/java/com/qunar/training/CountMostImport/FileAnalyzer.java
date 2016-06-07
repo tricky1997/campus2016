@@ -6,9 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 文件分析
  * Created by shining.cui on 2016/6/7.
  */
 public class FileAnalyzer {
+    /**
+     * 对所有文件循环分析，统计出现的类以及次数
+     * @param fileList 文件列表
+     * @return 出现的类以及次数，未排序的结果
+     * @throws IOException 文件读取异常
+     */
     public static Map<String, Integer> analyzeImportClassesMap(List<File> fileList) throws IOException {
         Map<String, Integer> importClassesMap = new HashMap<String, Integer>();
         BufferedReader bufferedReader;

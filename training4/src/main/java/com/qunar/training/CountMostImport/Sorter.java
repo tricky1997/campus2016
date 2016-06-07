@@ -3,9 +3,15 @@ package com.qunar.training.CountMostImport;
 import java.util.*;
 
 /**
+ * 对map进行排序，按照value进行排序
  * Created by shining.cui on 2016/6/7.
  */
 public class Sorter {
+    /**
+     *
+     * @param importClassesMap 对import类进行统计的未排序结果
+     * @return 对import类进行统计的排序后结果
+     */
     public static List<Map.Entry<String, Integer>> sortImportClassMap(Map<String, Integer> importClassesMap) {
         List<Map.Entry<String, Integer>> sortedList = new ArrayList<Map.Entry<String, Integer>>();
         List<Map.Entry<String, Integer>> sortedImportClassList = new ArrayList<Map.Entry<String, Integer>>(importClassesMap.entrySet());

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 获得30天汇率信息的汇总工具
  * Created by shining.cui on 2016/6/6.
  */
 public class Exchanger {
@@ -28,8 +29,15 @@ public class Exchanger {
         return getCurrency(days,EUROCode);
     }
 
+    /**
+     * 根据传入的天数，以及货币代码获得相应的汇率信息
+     * @param days 要查询的日期集合
+     * @param currencyCode 查询货币对应的代码
+     * @return 对应货币的对应日期集合的汇率信息集合
+     * @throws IOException
+     */
     private List<List<String>> getCurrency( List<String> days,String currencyCode) throws IOException {
-        List<List<String>> USDCurrency = new ArrayList<List<String>>();
+        List<List<String>> currencyList = new ArrayList<List<String>>();
         for (String dayStr : days) {
             List<String> dayStrAndCurrencyList = new ArrayList<String>();
             BufferedReader responseContent = HttpPoster.getResponseContent(currencyCode, dayStr, dayStr);
@@ -43,9 +51,9 @@ public class Exchanger {
             }
             dayStrAndCurrencyList.add(dayStr);
             dayStrAndCurrencyList.add(currency);
-            USDCurrency.add(dayStrAndCurrencyList);
+            currencyList.add(dayStrAndCurrencyList);
         }
-        return USDCurrency;
+        return currencyList;
     }
 
 }

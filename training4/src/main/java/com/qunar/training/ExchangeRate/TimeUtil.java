@@ -8,12 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 通过joda-time实现的时间处理工具
  * Created by shining.cui on 2016/6/6.
  */
 
 public class TimeUtil {
    static DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 
+    /**
+     * 获得从今天开始的30天内的天数
+     * @return 前30天对应的集合
+     */
     public static List<String> getThirtyDaysFromNow() {
         List<String> days = new ArrayList<String>();
         //从今天开始向前一共30天
@@ -26,6 +31,10 @@ public class TimeUtil {
         return days;
     }
 
+    /**
+     * 获得当前时间的日期格式化信息
+     * @return 当日日期
+     */
     public static String getNowDateStr() {
         DateTime now = new DateTime();
         String dateStr = now.toString(formatter);

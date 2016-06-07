@@ -25,7 +25,14 @@ public class PageAnalyzer {
     public  String getEUROCurrency(BufferedReader pageContentReader) throws IOException {
         return getCurrency(pageContentReader,EUROStr);
     }
-    
+
+    /**
+     * 根据网页页面内容获得外汇信息
+     * @param pageContentReader 网页页面的BufferedReader
+     * @param currencyStr 对应货币的代码
+     * @return 当天该货币的汇率信息
+     * @throws IOException
+     */
     private  String getCurrency(BufferedReader pageContentReader,String currencyStr) throws IOException {
         String currency = "";
         String line;
