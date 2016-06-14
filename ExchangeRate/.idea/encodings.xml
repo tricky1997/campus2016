@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/com/er/cfg/Configuration.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/er/dao/IExchangeRateDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/er/dao/impl/ExchangeRateDaoImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/er/dao/impl/ExchangeRateExcalDaoImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/er/entity/ERDocument.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/er/entity/SearchRule.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/er/main/main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/er/service/IExchangeRateService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/er/service/impl/ExchangeRateServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/com/er/dao/ExchangeRateDaoTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/com/er/service/ExchangeRateServiceImplTest.java" charset="UTF-8" />
+  </component>
+</project>
