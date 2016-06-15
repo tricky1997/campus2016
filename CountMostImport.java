@@ -113,10 +113,12 @@ public class CountMostImport {
 
 		@Override
 		public int compareTo(PackageCount o) {
+            //首先按引用数排序
 			if(count>o.count){
 				return 1;
 			}else if(count==o.count){
-				return pack.compareTo(o.pack);
+                //如果引用数相同，按包名排序
+				return o.pack.compareTo(pack);
 			}else {
 				return -1;
 			}
