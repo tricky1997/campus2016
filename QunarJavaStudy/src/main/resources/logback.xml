@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 将日志输入到控制台 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 将日志输入到指定的文件中 -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <!-- 指定的日志文件名 -->
+        <file>QunarJavaStudy/src/main/resources/logFile-main.log</file>
+        <!-- 是否追加到文件末尾，默认true -->
+        <append>true</append>
+        <!-- encoder后面也可以不加类名，用默认 -->
+        <encoder>
+            <pattern>[%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
