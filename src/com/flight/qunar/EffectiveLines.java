@@ -29,16 +29,16 @@ public class EffectiveLines {
         BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-            //不统计package，import；从public class、class、public interface、interface、public abstract class、abstract class声明行开始统计
+            //不统计package，import；从public class、class、public interface、interface、public abstract class、abstract class等声明行开始统计
             String temp;
             while ((temp=bufferedReader.readLine()) != null) {
                 String noSpace = temp.trim();
                 if(noSpace.startsWith("//") || noSpace.equals("")) continue;
                 if(startFlag) {
                     count++;
-                } else if(noSpace.startsWith("public class") || noSpace.startsWith("class")
-                        || noSpace.startsWith("public interface") || noSpace.startsWith("interface")
-                        || noSpace.startsWith("public abstract class") || noSpace.startsWith("abstract class")) {
+                } else if(noSpace.startsWith("public") || noSpace.startsWith("class")
+                        || noSpace.startsWith("private") || noSpace.startsWith("interface")
+                        || noSpace.startsWith("final") || noSpace.startsWith("abstract class")) {
                     startFlag = true;
                     count++;
                 }

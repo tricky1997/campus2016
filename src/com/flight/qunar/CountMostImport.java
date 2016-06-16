@@ -81,9 +81,9 @@ public class CountMostImport {
                         while ((readData = bufferedReader.readLine()) != null) {
                             String noSpace = readData.trim();
                             //不遍历类文件
-                            if(noSpace.startsWith("public class") || noSpace.startsWith("class")
-                                    || noSpace.startsWith("public interface") || noSpace.startsWith("interface")
-                                    || noSpace.startsWith("public abstract class") || noSpace.startsWith("abstract class")) break;
+                            if(noSpace.startsWith("public") || noSpace.startsWith("class")
+                                    || noSpace.startsWith("private") || noSpace.startsWith("interface")
+                                    || noSpace.startsWith("final") || noSpace.startsWith("abstract class")) break;
 
                             Pattern pattern = Pattern.compile("(import *)(([a-zA-Z]*\\.)*[A-Z][a-zA-Z]*)( *;)");
                             Matcher matcher = pattern.matcher(noSpace);
