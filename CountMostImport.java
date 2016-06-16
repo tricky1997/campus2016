@@ -76,7 +76,7 @@ public class CountMostImport {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 if (o1.getValue() == o2.getValue()) {
-                    return o1.getKey().compareTo(o2.getKey());  //如果次数一样，
+                    return o1.getKey().compareTo(o2.getKey());  //如果次数一样，按字典序列排序
                 }
                 return o1.getValue() - o2.getValue();  //降序排列
             }
