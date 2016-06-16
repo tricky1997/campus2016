@@ -20,7 +20,8 @@ import java.util.Date;
 
 /**
  * 从网站下载30天的所有人民币汇率数据，存入webData.xls
- * 读取该表格文档，计算一个月内人民币汇率中间价，并输出至analysis.xls
+ * 分析表格数据： 
+ *   读取该表格文档，计算一个月内人民币汇率中间价，并输出至analysis.xls
  * 需要导入jxl.jar包
  */
 public class ExchangeRate {
