@@ -13,9 +13,9 @@ public class EffectiveLines {
     }
 
     /*
-    读入文件，统计有效行数
-    filename为文件名
-    返回有效行数
+     * 读入文件，统计有效行数
+     * filename为文件名
+     * 返回有效行数
      */
     public int readFile(String filename) {
         File file = new File(filename);
