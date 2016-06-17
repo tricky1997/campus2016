@@ -1,2 +1,2 @@
 # campus2016
-git repository for qunar students 2016
+此次上传三个工程，分别为CountMostImport、EffectiveLines和ExchangeRate。其中src那个文件是传错了的，没找到在哪里删除:cold_sweat:，自动忽略就好。其中ExchangeRate工程中用到了[JxBrowser](https://www.teamdev.com/jxbrowser "点击进入")和[JexcelAPI](https://sourceforge.net/projects/jexcelapi/files/jexcelapi/2.6.6/jexcelapi_2_6_6.zip/download "点击下载")可点击相应按钮获取。JxBrowser需要License，我使用的是试用版本的，这程序应该一个月后就不能运行了:sob:。每个工程运行其中的Main类就可以得到结果了。:grin:欢迎各位批评指正！:smile:
