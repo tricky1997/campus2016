@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>人民币汇率中间价</title>
+    <link rel="stylesheet" type="text/css" href="/AppStructured/css/css.css">
+
+    <script type="text/javascript" src="/AppStructured/js/datepicker/WdatePicker.js"></script>
+    <link href="http://www.safe.gov.cn/AppStructured/js/datepicker/skin/WdatePicker.css" rel="stylesheet"
+          type="text/css">
+    <script type="text/javascript">
+
+        function validate() {
+
+            //var currencyId = document.getElementById("currencyId").value;
+            var startDateId = document.getElementById("startDateId").value;
+            var endDateId = document.getElementById("endDateId").value;
+            //document.cookie="xs=true";
+
+
+            //if(currencyId==''){
+            //  alert("币种 不能为空,请选择!");
+            /// return false;
+            //}
+            //  if(startDateId==''){
+            //      alert("开始日期 不能为空,请选择!");
+            //      return false;
+            //  }
+            //  if(endDateId==''){
+            //      alert("结束日期 不能为空,请选择!");
+            //      return false;
+            //      }
+            if (daysBetween(endDateId, startDateId) < 0) {
+                alert("结束日期 不能小于 开始日期,请重新选择!");
+                return false;
+            } else if (daysBetween(endDateId, startDateId) > 90) {
+                alert("查询间隔不能超过三个月，请重新选择!");
+                return false;
+            }
+            //document.RMBQuery.action="project_RMBQuery.action";
+            document.RMBQuery.submit();
+        }
+        function tijiao() {
+            document.RMBQuery.action = "project_exportRMBExcel.action";
+            document.RMBQuery.submit();
+        }
+
+        //| 求两个时间的天数差 日期格式为 YYYY-MM-dd
+        function daysBetween(DateOne, DateTwo) {
+
+            var OneMonth = DateOne.substring(5, DateOne.lastIndexOf('-'));
+            var OneDay = DateOne.substring(DateOne.length, DateOne.lastIndexOf('-') + 1);
+            var OneYear = DateOne.substring(0, DateOne.indexOf('-'));
+
+            var TwoMonth = DateTwo.substring(5, DateTwo.lastIndexOf('-'));
+            var TwoDay = DateTwo.substring(DateTwo.length, DateTwo.lastIndexOf('-') + 1);
+            var TwoYear = DateTwo.substring(0, DateTwo.indexOf('-'));
+
+            var cha = ((Date.parse(OneMonth + '/' + OneDay + '/' + OneYear) - Date.parse(TwoMonth + '/' + TwoDay + '/' + TwoYear)) / 86400000);
+            return cha;
+        }
+
+    </script>
+
+</head>
+<body style="overflow-x: hidden; overflow-y: auto;">
+
+
+<form id="RMBQuery" name="RMBQuery" onsubmit="return validate()"
+      action="http://www.safe.gov.cn/AppStructured/view/project_RMBQuery.action" method="post">
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="form-table">
+        <tbody>
+        <tr>
+
+
+            <td>
+                                            <span>
+                                                <input type="text" name="projectBean.startDate" size="16"
+                                                       value="2016-05-17" id="startDateId" class="Wdate"
+                                                       onfocus="WdatePicker({skin:'blue'})">
+                                                
+                                                <input type="text" name="projectBean.endDate" size="16"
+                                                       value="2016-06-16" id="endDateId" class="Wdate"
+                                                       onfocus="WdatePicker({skin:'blue'})">
+                                            </span>
+
+                <input name="queryYN" type="hidden" value="true">
+                                            <span class="form-table-label">
+                                                 <input onclick="javascript:validate()" type="button" value="查询">
+                                             </span>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+
+<div style="position: absolute; z-index: 19700; top: -1970px; left: -1970px;">
+    <iframe src="http://www.safe.gov.cn/AppStructured/js/datepicker/My97DatePicker.htm" frameborder="0" border="0"
+            scrolling="no" style="width: 186px; height: 318px;"></iframe>
+</div>
+</body>
+</html>

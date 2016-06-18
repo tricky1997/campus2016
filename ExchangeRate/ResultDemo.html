@@ -1,0 +1,411 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <META http-equiv=Content-Type content="text/html; charset=UTF-8">
+    <title>人民币汇率中间价</title>
+    <link rel="stylesheet" type="text/css" href="/AppStructured/css/css.css">
+    <script type="text/javascript" src="/AppStructured/js/datepicker/WdatePicker.js"></script>
+    <script type="text/javascript">function validate() {//var currencyId = document.getElementById("currencyId").value;var startDateId = document.getElementById("startDateId").value;var endDateId = document.getElementById("endDateId").value;//document.cookie="xs=true";//if(currencyId==''){//  alert("币种 不能为空,请选择!");///   return false;//}//  if(startDateId==''){//      alert("开始日期 不能为空,请选择!");//      return false;// }// if(endDateId==''){//        alert("结束日期 不能为空,请选择!");//      return false;//     }if(daysBetween(endDateId,startDateId) < 0){alert("结束日期 不能小于 开始日期,请重新选择!");return false;}else if(daysBetween(endDateId,startDateId) > 90){alert("查询间隔不能超过三个月，请重新选择!");return false;}document.RMBQuery.action="project_RMBQuery.action";document.RMBQuery.submit();}function tijiao(){document.RMBQuery.action="project_exportRMBExcel.action";document.RMBQuery.submit();}//| 求两个时间的天数差 日期格式为 YYYY-MM-ddfunction daysBetween(DateOne,DateTwo){var OneMonth = DateOne.substring(5,DateOne.lastIndexOf ('-'));var OneDay = DateOne.substring(DateOne.length,DateOne.lastIndexOf ('-')+1);var OneYear = DateOne.substring(0,DateOne.indexOf ('-'));var TwoMonth = DateTwo.substring(5,DateTwo.lastIndexOf ('-'));var TwoDay = DateTwo.substring(DateTwo.length,DateTwo.lastIndexOf ('-')+1);var TwoYear = DateTwo.substring(0,DateTwo.indexOf ('-'));var cha=((Date.parse(OneMonth+'/'+OneDay+'/'+OneYear)- Date.parse(TwoMonth+'/'+TwoDay+'/'+TwoYear))/86400000);return cha;}</script>
+</head>
+<body style="overflow-x: hidden; overflow-y: auto;">
+<form id="RMBQuery" name="RMBQuery" onsubmit="return validate()" action="/AppStructured/view/project_RMBQuery.action"
+      method="post">
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="100%" colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center" valign="top">
+                <table width="100%" border="0" align="center" cellspacing="0">
+                    <tr>
+                        <td class="tabulation">
+                            <div style="position: relative">
+                                <div id="menu2">查询</div>
+                            </div>
+                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
+                                   class="form-table">
+                                <tr>
+                                    <!-- <td width="12%" class="form-table-label">&nbsp;&nbsp;币种&nbsp;&nbsp;</td><td ><select name="projectBean.currencys" size="6" id="currencyId" style="width:200px" multiple="multiple"><option value="美元">美元</option><option value="欧元">欧元</option><option value="日元">日元</option><option value="港元">港元</option><option value="英镑">英镑</option><option value="林吉特">林吉特</option><option value="卢布">卢布</option><option value="澳元">澳元</option><option value="加元">加元</option><option value="新西兰元">新西兰元</option><option value="新加坡元">新加坡元</option><option value="瑞士法郎">瑞士法郎</option></select><input type="hidden" id="__multiselect_currencyId" name="__multiselect_projectBean.currencys" value=""/><font color="red">*</font></td>-->
+                                    <td width="12%" class="form-table-label">&nbsp;&nbsp;日期&nbsp;&nbsp;</td>
+                                    <td><span>&nbsp;&nbsp;从&nbsp;&nbsp;<input type="text" name="projectBean.startDate"
+                                                                              size="16" value="2016-05-18"
+                                                                              id="startDateId" class="Wdate"
+                                                                              onfocus="WdatePicker({skin:'blue'})"/>&nbsp;&nbsp;至&nbsp;&nbsp;<input
+                                            type="text" name="projectBean.endDate" size="16" value="2016-06-17"
+                                            id="endDateId" class="Wdate" onfocus="WdatePicker({skin:'blue'})"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                                            name="queryYN" TYPE="hidden" value="true"></input><span
+                                            class="form-table-label"><input onclick="javascript:validate()"
+                                                                            type="button" value="查询"/></span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" height="5"></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center" valign="top"><br>
+                <table width="100%" border="0" align="center" cellspacing="0">
+                    <tr>
+                        <td align="right"><span class="form-table-label"><input onclick="javascript:tijiao()"
+                                                                                type="button" value="导出表格"/></span></td>
+                    </tr>System.out.println(table.child(0).child(1).toString());
+                    <tr>
+                        <td height="20"></td>
+                    </tr>
+                    <tr><!-- 查询条件 -->
+                        <td class="tabulation">
+                            <div style="position: relative">
+                                <div id="menu2">人民币汇率中间价列表</div>
+                            </div>
+                            <table class="list" id="InfoTable" width="100%" border="0" align="center" cellpadding="3"
+                                   cellspacing="1">
+                                <tr>
+                                    <th width="12%" class="table_head" style="cursor:'default'" id="comtemplatename">
+                                        日期
+                                    </th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">美元&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">欧元&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">日元&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">港元&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">英镑&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">林吉特&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">卢布&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">澳元&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">加元&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">新西兰元&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">新加坡元&nbsp;</th>
+                                    <th width="8%" class="table_head" style="cursor:'default'" id="comtemplatename">瑞士法郎&nbsp;</th>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-16&nbsp;</td>
+                                    <td width="8%" align="center">657.39&nbsp;</td>
+                                    <td width="8%" align="center">741.31&nbsp;</td>
+                                    <td width="8%" align="center">6.2177&nbsp;</td>
+                                    <td width="8%" align="center">84.715&nbsp;</td>
+                                    <td width="8%" align="center">933.31&nbsp;</td>
+                                    <td width="8%" align="center">62.005&nbsp;</td>
+                                    <td width="8%" align="center">996.12&nbsp;</td>
+                                    <td width="8%" align="center">487.72&nbsp;</td>
+                                    <td width="8%" align="center">509.53&nbsp;</td>
+                                    <td width="8%" align="center">465.41&nbsp;</td>
+                                    <td width="8%" align="center">486.84&nbsp;</td>
+                                    <td width="8%" align="center">684.35&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-15&nbsp;</td>
+                                    <td width="8%" align="center">660.01&nbsp;</td>
+                                    <td width="8%" align="center">739.75&nbsp;</td>
+                                    <td width="8%" align="center">6.2298&nbsp;</td>
+                                    <td width="8%" align="center">85.036&nbsp;</td>
+                                    <td width="8%" align="center">932.24&nbsp;</td>
+                                    <td width="8%" align="center">61.981&nbsp;</td>
+                                    <td width="8%" align="center">1001.61&nbsp;</td>
+                                    <td width="8%" align="center">485.3&nbsp;</td>
+                                    <td width="8%" align="center">512.95&nbsp;</td>
+                                    <td width="8%" align="center">461.07&nbsp;</td>
+                                    <td width="8%" align="center">486.89&nbsp;</td>
+                                    <td width="8%" align="center">685.63&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-14&nbsp;</td>
+                                    <td width="8%" align="center">657.91&nbsp;</td>
+                                    <td width="8%" align="center">743.07&nbsp;</td>
+                                    <td width="8%" align="center">6.1851&nbsp;</td>
+                                    <td width="8%" align="center">84.751&nbsp;</td>
+                                    <td width="8%" align="center">935.72&nbsp;</td>
+                                    <td width="8%" align="center">61.826&nbsp;</td>
+                                    <td width="8%" align="center">994.76&nbsp;</td>
+                                    <td width="8%" align="center">485.33&nbsp;</td>
+                                    <td width="8%" align="center">512.87&nbsp;</td>
+                                    <td width="8%" align="center">461.48&nbsp;</td>
+                                    <td width="8%" align="center">484.94&nbsp;</td>
+                                    <td width="8%" align="center">682.82&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-13&nbsp;</td>
+                                    <td width="8%" align="center">658.05&nbsp;</td>
+                                    <td width="8%" align="center">740.48&nbsp;</td>
+                                    <td width="8%" align="center">6.1817&nbsp;</td>
+                                    <td width="8%" align="center">84.767&nbsp;</td>
+                                    <td width="8%" align="center">936.02&nbsp;</td>
+                                    <td width="8%" align="center">61.759&nbsp;</td>
+                                    <td width="8%" align="center">990.88&nbsp;</td>
+                                    <td width="8%" align="center">485.84&nbsp;</td>
+                                    <td width="8%" align="center">514.83&nbsp;</td>
+                                    <td width="8%" align="center">464.65&nbsp;</td>
+                                    <td width="8%" align="center">483.87&nbsp;</td>
+                                    <td width="8%" align="center">683.05&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-08&nbsp;</td>
+                                    <td width="8%" align="center">655.93&nbsp;</td>
+                                    <td width="8%" align="center">745.03&nbsp;</td>
+                                    <td width="8%" align="center">6.1207&nbsp;</td>
+                                    <td width="8%" align="center">84.458&nbsp;</td>
+                                    <td width="8%" align="center">953.66&nbsp;</td>
+                                    <td width="8%" align="center">61.724&nbsp;</td>
+                                    <td width="8%" align="center">984.71&nbsp;</td>
+                                    <td width="8%" align="center">488.45&nbsp;</td>
+                                    <td width="8%" align="center">514.74&nbsp;</td>
+                                    <td width="8%" align="center">456.91&nbsp;</td>
+                                    <td width="8%" align="center">485.33&nbsp;</td>
+                                    <td width="8%" align="center">679.78&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-07&nbsp;</td>
+                                    <td width="8%" align="center">656.18&nbsp;</td>
+                                    <td width="8%" align="center">744.99&nbsp;</td>
+                                    <td width="8%" align="center">6.1101&nbsp;</td>
+                                    <td width="8%" align="center">84.476&nbsp;</td>
+                                    <td width="8%" align="center">948.73&nbsp;</td>
+                                    <td width="8%" align="center">61.971&nbsp;</td>
+                                    <td width="8%" align="center">997.76&nbsp;</td>
+                                    <td width="8%" align="center">483.6&nbsp;</td>
+                                    <td width="8%" align="center">512.04&nbsp;</td>
+                                    <td width="8%" align="center">453.21&nbsp;</td>
+                                    <td width="8%" align="center">483.78&nbsp;</td>
+                                    <td width="8%" align="center">676.33&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-06&nbsp;</td>
+                                    <td width="8%" align="center">654.97&nbsp;</td>
+                                    <td width="8%" align="center">743.77&nbsp;</td>
+                                    <td width="8%" align="center">6.1406&nbsp;</td>
+                                    <td width="8%" align="center">84.316&nbsp;</td>
+                                    <td width="8%" align="center">942.81&nbsp;</td>
+                                    <td width="8%" align="center">62.549&nbsp;</td>
+                                    <td width="8%" align="center">1003.79&nbsp;</td>
+                                    <td width="8%" align="center">480.68&nbsp;</td>
+                                    <td width="8%" align="center">505.11&nbsp;</td>
+                                    <td width="8%" align="center">454.19&nbsp;</td>
+                                    <td width="8%" align="center">482.2&nbsp;</td>
+                                    <td width="8%" align="center">670.69&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-03&nbsp;</td>
+                                    <td width="8%" align="center">657.93&nbsp;</td>
+                                    <td width="8%" align="center">733.47&nbsp;</td>
+                                    <td width="8%" align="center">6.0431&nbsp;</td>
+                                    <td width="8%" align="center">84.678&nbsp;</td>
+                                    <td width="8%" align="center">948.3&nbsp;</td>
+                                    <td width="8%" align="center">62.884&nbsp;</td>
+                                    <td width="8%" align="center">1015.36&nbsp;</td>
+                                    <td width="8%" align="center">475.32&nbsp;</td>
+                                    <td width="8%" align="center">502.54&nbsp;</td>
+                                    <td width="8%" align="center">448.07&nbsp;</td>
+                                    <td width="8%" align="center">478.31&nbsp;</td>
+                                    <td width="8%" align="center">664.38&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-02&nbsp;</td>
+                                    <td width="8%" align="center">656.88&nbsp;</td>
+                                    <td width="8%" align="center">735.5&nbsp;</td>
+                                    <td width="8%" align="center">6.006&nbsp;</td>
+                                    <td width="8%" align="center">84.545&nbsp;</td>
+                                    <td width="8%" align="center">947.06&nbsp;</td>
+                                    <td width="8%" align="center">62.965&nbsp;</td>
+                                    <td width="8%" align="center">1019.24&nbsp;</td>
+                                    <td width="8%" align="center">476.11&nbsp;</td>
+                                    <td width="8%" align="center">502.51&nbsp;</td>
+                                    <td width="8%" align="center">447.97&nbsp;</td>
+                                    <td width="8%" align="center">477.29&nbsp;</td>
+                                    <td width="8%" align="center">664.91&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-06-01&nbsp;</td>
+                                    <td width="8%" align="center">658.89&nbsp;</td>
+                                    <td width="8%" align="center">733.08&nbsp;</td>
+                                    <td width="8%" align="center">5.9543&nbsp;</td>
+                                    <td width="8%" align="center">84.789&nbsp;</td>
+                                    <td width="8%" align="center">953.69&nbsp;</td>
+                                    <td width="8%" align="center">62.341&nbsp;</td>
+                                    <td width="8%" align="center">1010.5&nbsp;</td>
+                                    <td width="8%" align="center">476.9&nbsp;</td>
+                                    <td width="8%" align="center">503.55&nbsp;</td>
+                                    <td width="8%" align="center">447.07&nbsp;</td>
+                                    <td width="8%" align="center">478.03&nbsp;</td>
+                                    <td width="8%" align="center">663.11&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-31&nbsp;</td>
+                                    <td width="8%" align="center">657.9&nbsp;</td>
+                                    <td width="8%" align="center">733.18&nbsp;</td>
+                                    <td width="8%" align="center">5.932&nbsp;</td>
+                                    <td width="8%" align="center">84.685&nbsp;</td>
+                                    <td width="8%" align="center">963.26&nbsp;</td>
+                                    <td width="8%" align="center">62.319&nbsp;</td>
+                                    <td width="8%" align="center">997.49&nbsp;</td>
+                                    <td width="8%" align="center">473.15&nbsp;</td>
+                                    <td width="8%" align="center">504.41&nbsp;</td>
+                                    <td width="8%" align="center">441.26&nbsp;</td>
+                                    <td width="8%" align="center">476.77&nbsp;</td>
+                                    <td width="8%" align="center">663.46&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-30&nbsp;</td>
+                                    <td width="8%" align="center">657.84&nbsp;</td>
+                                    <td width="8%" align="center">730.15&nbsp;</td>
+                                    <td width="8%" align="center">5.9365&nbsp;</td>
+                                    <td width="8%" align="center">84.7&nbsp;</td>
+                                    <td width="8%" align="center">961.56&nbsp;</td>
+                                    <td width="8%" align="center">61.926&nbsp;</td>
+                                    <td width="8%" align="center">1011.17&nbsp;</td>
+                                    <td width="8%" align="center">472.16&nbsp;</td>
+                                    <td width="8%" align="center">503.28&nbsp;</td>
+                                    <td width="8%" align="center">440.2&nbsp;</td>
+                                    <td width="8%" align="center">476.39&nbsp;</td>
+                                    <td width="8%" align="center">661.34&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-27&nbsp;</td>
+                                    <td width="8%" align="center">654.9&nbsp;</td>
+                                    <td width="8%" align="center">733.34&nbsp;</td>
+                                    <td width="8%" align="center">5.9706&nbsp;</td>
+                                    <td width="8%" align="center">84.331&nbsp;</td>
+                                    <td width="8%" align="center">960.59&nbsp;</td>
+                                    <td width="8%" align="center">61.918&nbsp;</td>
+                                    <td width="8%" align="center">1004.69&nbsp;</td>
+                                    <td width="8%" align="center">473.28&nbsp;</td>
+                                    <td width="8%" align="center">504.7&nbsp;</td>
+                                    <td width="8%" align="center">442.16&nbsp;</td>
+                                    <td width="8%" align="center">477.19&nbsp;</td>
+                                    <td width="8%" align="center">662.32&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-26&nbsp;</td>
+                                    <td width="8%" align="center">655.52&nbsp;</td>
+                                    <td width="8%" align="center">731.8&nbsp;</td>
+                                    <td width="8%" align="center">5.9597&nbsp;</td>
+                                    <td width="8%" align="center">84.432&nbsp;</td>
+                                    <td width="8%" align="center">963.68&nbsp;</td>
+                                    <td width="8%" align="center">62.246&nbsp;</td>
+                                    <td width="8%" align="center">997.95&nbsp;</td>
+                                    <td width="8%" align="center">470.97&nbsp;</td>
+                                    <td width="8%" align="center">503.39&nbsp;</td>
+                                    <td width="8%" align="center">439.81&nbsp;</td>
+                                    <td width="8%" align="center">475.96&nbsp;</td>
+                                    <td width="8%" align="center">661.66&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-25&nbsp;</td>
+                                    <td width="8%" align="center">656.93&nbsp;</td>
+                                    <td width="8%" align="center">731.18&nbsp;</td>
+                                    <td width="8%" align="center">5.9662&nbsp;</td>
+                                    <td width="8%" align="center">84.577&nbsp;</td>
+                                    <td width="8%" align="center">959.98&nbsp;</td>
+                                    <td width="8%" align="center">62.345&nbsp;</td>
+                                    <td width="8%" align="center">1009.05&nbsp;</td>
+                                    <td width="8%" align="center">472.38&nbsp;</td>
+                                    <td width="8%" align="center">500.82&nbsp;</td>
+                                    <td width="8%" align="center">443.33&nbsp;</td>
+                                    <td width="8%" align="center">475.31&nbsp;</td>
+                                    <td width="8%" align="center">661.45&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-24&nbsp;</td>
+                                    <td width="8%" align="center">654.68&nbsp;</td>
+                                    <td width="8%" align="center">734.24&nbsp;</td>
+                                    <td width="8%" align="center">5.99&nbsp;</td>
+                                    <td width="8%" align="center">84.291&nbsp;</td>
+                                    <td width="8%" align="center">948.11&nbsp;</td>
+                                    <td width="8%" align="center">62.213&nbsp;</td>
+                                    <td width="8%" align="center">1017.54&nbsp;</td>
+                                    <td width="8%" align="center">472.49&nbsp;</td>
+                                    <td width="8%" align="center">497.89&nbsp;</td>
+                                    <td width="8%" align="center">441.87&nbsp;</td>
+                                    <td width="8%" align="center">474.97&nbsp;</td>
+                                    <td width="8%" align="center">661.65&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-23&nbsp;</td>
+                                    <td width="8%" align="center">654.55&nbsp;</td>
+                                    <td width="8%" align="center">734.71&nbsp;</td>
+                                    <td width="8%" align="center">5.9488&nbsp;</td>
+                                    <td width="8%" align="center">84.27&nbsp;</td>
+                                    <td width="8%" align="center">948.75&nbsp;</td>
+                                    <td width="8%" align="center">62.039&nbsp;</td>
+                                    <td width="8%" align="center">1019.42&nbsp;</td>
+                                    <td width="8%" align="center">473.28&nbsp;</td>
+                                    <td width="8%" align="center">499.26&nbsp;</td>
+                                    <td width="8%" align="center">443.16&nbsp;</td>
+                                    <td width="8%" align="center">474.43&nbsp;</td>
+                                    <td width="8%" align="center">660.75&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-20&nbsp;</td>
+                                    <td width="8%" align="center">655.1&nbsp;</td>
+                                    <td width="8%" align="center">733.77&nbsp;</td>
+                                    <td width="8%" align="center">5.9558&nbsp;</td>
+                                    <td width="8%" align="center">84.347&nbsp;</td>
+                                    <td width="8%" align="center">956.22&nbsp;</td>
+                                    <td width="8%" align="center">62.001&nbsp;</td>
+                                    <td width="8%" align="center">1019.47&nbsp;</td>
+                                    <td width="8%" align="center">473.57&nbsp;</td>
+                                    <td width="8%" align="center">500.73&nbsp;</td>
+                                    <td width="8%" align="center">442.65&nbsp;</td>
+                                    <td width="8%" align="center">475.07&nbsp;</td>
+                                    <td width="8%" align="center">661.12&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-19&nbsp;</td>
+                                    <td width="8%" align="center">655.31&nbsp;</td>
+                                    <td width="8%" align="center">735.08&nbsp;</td>
+                                    <td width="8%" align="center">5.9539&nbsp;</td>
+                                    <td width="8%" align="center">84.372&nbsp;</td>
+                                    <td width="8%" align="center">956.49&nbsp;</td>
+                                    <td width="8%" align="center">61.833&nbsp;</td>
+                                    <td width="8%" align="center">1007.74&nbsp;</td>
+                                    <td width="8%" align="center">473.65&nbsp;</td>
+                                    <td width="8%" align="center">502.62&nbsp;</td>
+                                    <td width="8%" align="center">442.27&nbsp;</td>
+                                    <td width="8%" align="center">474.41&nbsp;</td>
+                                    <td width="8%" align="center">663.71&nbsp;</td>
+                                </tr>
+                                <tr class="first" onMouseover='this.style.backgroundColor="#fffcbf"'
+                                    onMouseout='this.style.backgroundColor="#eff6fe"'>
+                                    <td width="8%" align="center">2016-05-18&nbsp;</td>
+                                    <td width="8%" align="center">652.16&nbsp;</td>
+                                    <td width="8%" align="center">737.78&nbsp;</td>
+                                    <td width="8%" align="center">5.9832&nbsp;</td>
+                                    <td width="8%" align="center">84.013&nbsp;</td>
+                                    <td width="8%" align="center">942.48&nbsp;</td>
+                                    <td width="8%" align="center">61.461&nbsp;</td>
+                                    <td width="8%" align="center">992.93&nbsp;</td>
+                                    <td width="8%" align="center">476.67&nbsp;</td>
+                                    <td width="8%" align="center">504.69&nbsp;</td>
+                                    <td width="8%" align="center">444.08&nbsp;</td>
+                                    <td width="8%" align="center">475.72&nbsp;</td>
+                                    <td width="8%" align="center">665.34&nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table><!--      <script type="text/javascript">document.cookie="xs=false";</script>--></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
