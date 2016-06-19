@@ -28,7 +28,7 @@ public class FileAnalyzer {
             bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                // 去除收尾的空字符
+                // 去除首尾的空字符
                 String trimLine = line.trim();
 
                 // 当以import开头，且接着是空字符时，判断为一条import语句 （避免了误判情况，如importClassesMap）
