@@ -1,8 +1,8 @@
-package com.qunar.homework.EffectiveLines;
+﻿package com.qunar.homework.EffectiveLines;
 
 /**
  * 测试源代码有效行的源程序文件，包括多行注释、单行注释、空行、特殊情况等
- * 文件总共33行，有效代码行数为：8行
+ * 文件总共33行，有效代码行数为：8行 
  * Created by zhaocai-luo on 2016/6/15.
  */
 
