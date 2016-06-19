@@ -32,7 +32,7 @@ public class FileAnalyzer {
                 String trimLine = line.trim();
 
                 // 当以import开头，且接着是空字符时，判断为一条import语句 （避免了误判情况，如importClassesMap）
-                if (trimLine.startsWith("import") && (trimLine.charAt(6) <= ' ')) {
+                if ((trimLine.length() > 0) && trimLine.startsWith("import") && (trimLine.charAt(6) <= ' ')) {
                     if (trimLine.endsWith("*;")){   //  不考虑.*的引用情况
                         continue;
                     }
