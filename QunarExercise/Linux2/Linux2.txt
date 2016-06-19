@@ -1,0 +1,3 @@
+假设dir1在本地的路径为/dir1，则：
+
+scp -r /dir1 root@ l-test.dev.cn1:/tmp
