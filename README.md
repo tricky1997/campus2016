@@ -56,4 +56,12 @@
 
 ----------
 
-###Task 4 - 
+###Task 4 - List the Top-10 Visited IP in The Access Log
+
+本例程用于统计Tomcat日志文件访问次数最多的 10 个 IP,以及对应的次数。
+
+----------
+
+###Task 5 - Copy the Local files to the Remote Machine
+
+从本地目录 dir1 拷贝一个文件到目标机l-test.dev.cn1 的/tmp 目录下。
