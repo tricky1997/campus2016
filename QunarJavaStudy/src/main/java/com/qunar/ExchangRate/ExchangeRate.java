@@ -118,19 +118,19 @@ public class ExchangeRate {
         //由于之前有一个dreport-title的td，所以从第二个开始遍历
         for (int i = 1; i < n; i++) {
             titleList.add(titles.get(i).text());
-            //log.debug("标题" + titles.get(i).text());
+            log.debug("标题" + titles.get(i).text());
         }
         rate.add(titleList);
 
-        //12+1列
+        //之前是12+1列，现在又是13+1列
         n= dates.size();
         for (int i = 0; i < n; i++) {
             List<String> contentList = new ArrayList<String>();
             contentList.add(dates.get(i).text());
-            //log.debug("日期：" + dates.get(i).text());
-            for (int j = 0; j < 12; j++) {
-                contentList.add(contents.get(i*12 + j).text());
-                //log.debug("添加汇率：" + contents.get(i*12 + j).text());
+            log.debug("日期：" + dates.get(i).text());
+            for (int j = 0; j < 13; j++) {
+                contentList.add(contents.get(i*13 + j).text());
+                log.debug("添加汇率：" + contents.get(i*13 + j).text());
             }
             rate.add(contentList);
         }
