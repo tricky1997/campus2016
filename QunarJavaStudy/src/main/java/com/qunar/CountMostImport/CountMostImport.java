@@ -14,7 +14,7 @@ public class CountMostImport {
     public static final Logger log = LoggerFactory.getLogger(CountMostImport.class);
 
     public static List<String> MostImportedClass(String path) throws IOException {
-        List<File> filteredFiles = iteratorDirAllfiles(path);
+        List<File> filteredFiles = iteratorDirAllFiles(path);
         //遍历每一个java源文件，得出import结果。
         HashMap<String, Integer> importedClass = iteratorSourceFile(filteredFiles);
         //排序
@@ -40,7 +40,7 @@ public class CountMostImport {
      * @param path 文件路径
      * @throws IOException
      */
-    protected static List<File> iteratorDirAllfiles(String path) throws IOException {
+    protected static List<File> iteratorDirAllFiles(String path) throws IOException {
         File file = new File(path);
         //外部路径必须是文件夹，且存在
         if (!file.exists() || !file.isDirectory()) {
@@ -177,7 +177,7 @@ public class CountMostImport {
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if (o1.getValue() == o2.getValue()) {
+                if (o1.getValue().equals(o2.getValue())) {
                     return RuleBasedCollator.getInstance(Locale.ENGLISH).compare(o1.getKey(), o2.getKey());
                 } else {
                     return o1.getValue() - o2.getValue();
