@@ -1,0 +1,12 @@
+depend lib 保存抓取网页数据和Excel操作的依赖包
+
+src为源码
+
+EffectiveLines直接使用src下的EffectiveLines.java 作为测试文件
+
+ExchangeRate将汇率数据保存到ExchangeRate.xls中
+
+CountMostImport使用test文件夹下文件作为测试数据
+
+
+
