@@ -10,10 +10,10 @@
 目录结构
 
 EffectiveLines/　根目录
-　out/　　class文件
-　src/　　 源代码
-　　./CalcCodeLines.java　 有效行数计算程序
-　target/　待统计的Java文件
+  out/　　class文件
+  src/　　 源代码
+    ./CalcCodeLines.java　 有效行数计算程序
+  target/　待统计的Java文件
 
 ----------
 
@@ -28,11 +28,11 @@ EffectiveLines/　根目录
 目录结构
 
 ExchangeRate/　根目录
-　out/　　class文件
-　src/　 　源代码
-　　./ExchangeRate.java　　储存汇率信息的类
-　　./GetRateByJsoup.java　爬虫类
-　libs/　　jar包
+  out/　　class文件
+  src/　 　源代码
+    ./ExchangeRate.java　　储存汇率信息的类
+    ./GetRateByJsoup.java　爬虫类
+  libs/　　jar包
 
 ----------
 
@@ -47,12 +47,12 @@ ExchangeRate/　根目录
 目录结构
 
 ExchangeRate/　根目录
-　out/　　class文件
-　src/　 　源代码
-　　./EntryComparator.java　　比较排序规则
-　　./Processor.java　　　　　统计处理程序
-　　./TestComparator.java　　用于测试比较器
-　target/　待统计的Java文件
+  out/　　class文件
+  src/　 　源代码
+    ./EntryComparator.java　　比较排序规则
+    ./Processor.java　　　　　统计处理程序
+    ./TestComparator.java　　用于测试比较器
+  target/　待统计的Java文件
 
 ----------
 
