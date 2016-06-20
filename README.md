@@ -9,11 +9,11 @@
 
 目录结构
 
-[EffectiveLines/](#1)　根目录
-　[out/](#1.1)　class文件
-　[src/](#1.1)　 源代码
-　　[./CalcCodeLines.java](#1.1.1)　 有效行数计算程序
-　[target/](#1.1)　待统计的Java文件
+EffectiveLines/　根目录
+　out/　　class文件
+　src/　　 源代码
+　　./CalcCodeLines.java　 有效行数计算程序
+　target/　待统计的Java文件
 
 ----------
 
@@ -27,12 +27,12 @@
 
 目录结构
 
-[ExchangeRate/](#1)　根目录
-　[out/](#1.1)　class文件
-　[src/](#1.1)　 源代码
-　　[./ExchangeRate.java](#1.1.1)　　储存汇率信息的类
-　　[./GetRateByJsoup.java](#1.1.1)　爬虫类
-　[libs/](#1.1)　jar包
+ExchangeRate/　根目录
+　out/　　class文件
+　src/　 　源代码
+　　./ExchangeRate.java　　储存汇率信息的类
+　　./GetRateByJsoup.java　爬虫类
+　libs/　　jar包
 
 ----------
 
@@ -46,13 +46,13 @@
 
 目录结构
 
-[ExchangeRate/](#1)　根目录
-　[out/](#1.1)　class文件
-　[src/](#1.1)　 源代码
-　　[./EntryComparator.java](#1.1.1)　　比较排序规则
-　　[./Processor.java](#1.1.1)　　　　　 统计处理程序
-　　[./TestComparator.java](#1.1.1)　　 用于测试比较器
-　[target/](#1.1)　待统计的Java文件
+ExchangeRate/　根目录
+　out/　　class文件
+　src/　 　源代码
+　　./EntryComparator.java　　比较排序规则
+　　./Processor.java　　　　　统计处理程序
+　　./TestComparator.java　　用于测试比较器
+　target/　待统计的Java文件
 
 ----------
 
