@@ -15,6 +15,8 @@ public class EffectiveLines {
                 if(!s.isEmpty()&&!s.startsWith("//"))
                     cnt++;
             }
+            bufferedReader.close();
+            fileReader.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
