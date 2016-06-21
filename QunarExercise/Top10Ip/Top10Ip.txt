@@ -1,11 +1,11 @@
-假设access.log中第三个字段为访问的ip字段，则
+假设access.log中第一个字段为访问的ip字段，则
 
-$ cat access.log | awk `print{$3}` |sort |uniq –c | sort –rn| head -10
+$ cat access.log | awk '{print $1}' |sort |uniq –c | sort –rn| head -10
 
 注释：
 
 cat access.log: 读取日志文件
-awk `print{$3}`: 打印每行第三个字段
+awk '{print $1}': 打印每行第一个字段
 sort: 排序，相同的ip排在一起
 uniq -c : 打印每一重复行出现的次数
 sort –rn: 对排序求逆，按从大到小排序
