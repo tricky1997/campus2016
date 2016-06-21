@@ -1,0 +1,5 @@
+Top10Ip.sh 保存命令
+
+access.log.txt 为日志文件
+
+result.txt 保存访问次数前十的ip地址
