@@ -1,0 +1,3 @@
+#! /bin/sh
+
+scp filepath username@l-test.dev.cn1:/tmp
