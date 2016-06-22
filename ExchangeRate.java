@@ -20,8 +20,11 @@ import java.util.Date;
 public class ExchangeRate {
     private ArrayList<String[]> s;
 
-    private void read(){
+    public ExchangeRate(){
         s=new ArrayList<>();
+    }
+
+    private void read(){
         s.add(new String[]{"DATE","USD","EUR","HKD"});
         String url="http://www.safe.gov.cn/AppStructured/view/project_RMBQuery.action";
         SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
@@ -74,6 +77,7 @@ public class ExchangeRate {
         }
     }
     public void exchangeRate(){
+        s.clear();
         read();
         write();
     }
