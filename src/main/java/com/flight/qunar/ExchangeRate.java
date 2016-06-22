@@ -91,9 +91,6 @@ public class ExchangeRate {
         try {
             //创建Excel文件
             File file = new File(FILE_Query);
-            if(file.exists()) {
-                file.createNewFile();
-            }
             outputStream = new FileOutputStream(file);
             writableWorkbook = Workbook.createWorkbook(outputStream);
             WritableSheet writableSheet = writableWorkbook.createSheet("人民币汇率", 0);

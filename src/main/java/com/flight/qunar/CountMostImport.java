@@ -22,7 +22,7 @@ public class CountMostImport {
         Scanner scanner = new Scanner(System.in);
         System.out.println("输入项目目录的绝对路径:");
         while (scanner.hasNext()) {
-            importCountMap = new HashMap<>();
+            importCountMap = new HashMap<String,Integer>();
             countMostImport(scanner.nextLine());
             System.out.println("输入项目目录的绝对路径:");
         }
@@ -34,9 +34,9 @@ public class CountMostImport {
         //遍历各个文件并进行统计
         listFiles(file);
         //对统计结果进行排序并打印
-        List<Map.Entry<String, Integer>> list_data = new ArrayList<>(importCountMap.entrySet());
+        List<Map.Entry<String, Integer>> list_data = new ArrayList<Map.Entry<String, Integer>>(importCountMap.entrySet());
         Collections.sort(list_data, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
+
             public int compare(Map.Entry<String, Integer> s1, Map.Entry<String, Integer> s2) {
                 if(s1.getValue() > s2.getValue()) {
                     return -1;
