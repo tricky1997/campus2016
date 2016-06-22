@@ -32,6 +32,7 @@ import java.util.List;
 /**
  * Created by Wang on 2016/6/19.
  */
+//添加了jxl.jar，httpclient类库,htmlparser类库,git上没添加
 public class ExchangeRate {
     public static final String URL = "http://www.safe.gov.cn/AppStructured/view/project_RMBQuery.action";
     private String today;
