@@ -1,5 +1,4 @@
-# campus2016
-git repository for qunar students 2016
-上传了工程目录。
-三个module对应三个作业。
-三个java文件重新放置了一份在最外面。
+上传了整个项目，对应名字的文件夹为对应的module。
+每个module中，运行test下的测试函数即可。
+
+linux作业中日志文件附带了用于分析的日志文件。
