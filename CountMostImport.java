@@ -70,9 +70,10 @@ public class CountMostImport {
                 countClass(file.getPath());
             if(file.getName().contains(".java"))
             {
+                BufferedReader br=null;
                 //System.out.println("处理文件："+file.getName());
                 try {
-                    BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
+                    br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
                     String line;
                     while((line=br.readLine())!=null)
                     {
@@ -97,6 +98,16 @@ public class CountMostImport {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+                finally {
+                    if(br!=null)
+                    {
+                        try {
+                            br.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
         }

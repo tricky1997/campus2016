@@ -52,9 +52,10 @@ public class ExchangeRate {
     public void getRateAndExport() {
         List<List<String>> Rates=getRate();
         //写入xls文件
+        WritableWorkbook wwb=null;
         try {
             OutputStream os=new FileOutputStream(filePath);
-            WritableWorkbook wwb = Workbook.createWorkbook(os);
+            wwb = Workbook.createWorkbook(os);
             jxl.write.WritableSheet ws = wwb.createSheet("汇率中间价", 0);
             //写入每列的名称
             ws.addCell(new Label(1,0,"美元"));
@@ -69,8 +70,7 @@ public class ExchangeRate {
                 }
                 i++;
             }
-            wwb.write();
-            wwb.close();
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -80,6 +80,21 @@ public class ExchangeRate {
             e.printStackTrace();
         } catch (WriteException e) {
             e.printStackTrace();
+        }
+        finally {
+            if(wwb!=null)
+            {
+                try {
+                    wwb.write();
+                    wwb.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (WriteException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
         }
     }
     //获得指定url集合中的汇率
