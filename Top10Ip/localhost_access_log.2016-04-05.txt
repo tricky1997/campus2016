@@ -1,0 +1,4 @@
+114.212.83.246 - - [05/Apr/2016:09:14:14 +0800] "POST /solr/collection1/dataimport?command=delta-import&clean=false&commit=true&entity=JW_RAW_DATA_SLAVE1 HTTP/1.1" 200 864
+114.212.82.185 - - [05/Apr/2016:17:02:52 +0800] "GET / HTTP/1.1" 200 11250
+114.212.82.185 - - [05/Apr/2016:17:02:53 +0800] "GET /nice%20ports%2C/Tri%6Eity.txt%2ebak HTTP/1.0" 404 1064
+114.212.83.246 - - [05/Apr/2016:21:14:19 +0800] "POST /solr/collection1/dataimport?command=delta-import&clean=false&commit=true&entity=JW_RAW_DATA_SLAVE1 HTTP/1.1" 200 865

@@ -1,0 +1,2 @@
+114.212.83.246 - - [02/Apr/2016:09:14:15 +0800] "POST /solr/collection1/dataimport?command=delta-import&clean=false&commit=true&entity=JW_RAW_DATA_SLAVE1 HTTP/1.1" 200 864
+114.212.83.246 - - [02/Apr/2016:21:14:14 +0800] "POST /solr/collection1/dataimport?command=delta-import&clean=false&commit=true&entity=JW_RAW_DATA_SLAVE1 HTTP/1.1" 200 864
