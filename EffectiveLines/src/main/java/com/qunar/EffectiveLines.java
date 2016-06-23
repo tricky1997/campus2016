@@ -27,8 +27,9 @@ public class EffectiveLines {
             return;
         }
         File file=new File(filePath);
+        BufferedReader br=null;
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
             String line;
             while((line=br.readLine())!=null)
             {
@@ -40,13 +41,24 @@ public class EffectiveLines {
                     lineNumber++;
                 }
             }
-            br.close();
+
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        finally {
+            if(br!=null)
+            {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
     }
 }
