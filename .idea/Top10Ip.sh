@@ -1,0 +1,1 @@
+awk '{print $1}' localhost_access_log.*.txt sort|uniq -c|sort -rn|head -n 10
