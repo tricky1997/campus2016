@@ -1,0 +1,1 @@
+cat access_log.txt |awk '{print $1}'|uniq -c |sort ¨Cn -r |head ¨Cn 10
