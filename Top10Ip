@@ -1,0 +1,33 @@
+#!/bin/bash
+
+old_dir=$(pwd)
+cd access\ log/
+
+final_file="final_log.log"
+# 判断当前目录中是否存在final_log.log文件 
+if [ -f $final_file ] ; then
+	rm -f $final_file 
+fi
+# 把当前目录下的所有日志文件保存到files数组中
+files=(`ls`)
+
+# 计算数组中保存的文件个数
+count=${#files[@]}
+
+# 循环把所有日志文件追加成一个大文件
+for((i=0;i<$count;i++));
+do
+	cat ${files[$i]} >> $final_file
+done
+
+# 1.先去空行
+# 2.再进行排序
+# 3.去重并计算出ip出现次数
+# 4.再按照次数降序
+# 5.取出前10 ip
+cat $final_file | sed -r '/^[\s]*$/d' | sort | uniq -c | sort -nr | head -n 10 
+
+# 删除临时文件
+rm -f $final_file
+# 返回到之前目录
+cd $old_dir

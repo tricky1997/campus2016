@@ -1,0 +1,12 @@
+#!/usr/bin/expect
+
+set timeout 30
+# 使用expect下的spawn命令去执行scp命令把test.txt拷贝到目标主机下的tmp目录 
+spawn scp dir1/test.txt meng@1-test.dev.cn1:/tmp
+set timeout 30
+# 和后台程序交互如果需要输入密码则向其发送密码
+expect "meng@1-test.dev.cn1's password:"
+send "meng123456\r"
+set timeout 30
+expect eof
+exit
