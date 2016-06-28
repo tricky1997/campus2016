@@ -18,6 +18,7 @@ public class CountMostImport {
             dir = bufferedReader.readLine() ;
             f = new File(dir);
         }
+        bufferedReader.close();
         countMostImport.AnalysisFile(f);
         countMostImport.imp_temp= new ArrayList<Map.Entry<String, Integer>>(countMostImport.imp.entrySet());
         countMostImport.sortImport();
