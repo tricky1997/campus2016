@@ -10,13 +10,13 @@ public class CountMostImport {
     public static void main(String[] args)throws Exception{
         CountMostImport countMostImport = new CountMostImport();
         System.out.println("请输入有效的项目目录(如：D:/IntelliJ IDEA/CountMostImport)：");
-        Scanner in = new Scanner(System.in);
-        String dir = in.next() ;
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String dir = bufferedReader.readLine() ;
         File f = new File(dir);
-        while(!f.exists()||!f.isDirectory()){
+        while(!f.exists()||f.isDirectory()!=true){
             System.out.println("输入目录错误，请输入有效的项目目录(如：D:/IntelliJ IDEA/CountMostImport)：");
-            dir = in.next() ;
-            f = new File(dir) ;
+            dir = bufferedReader.readLine() ;
+            f = new File(dir);
         }
         countMostImport.AnalysisFile(f);
         countMostImport.imp_temp= new ArrayList<Map.Entry<String, Integer>>(countMostImport.imp.entrySet());
@@ -42,8 +42,9 @@ public class CountMostImport {
     把java文件中的import的类名取出来并计数
      */
     public void CountImportForTen(File f){
+        BufferedReader br = null ;
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
             String str = "" ;
             String importname ;
             while((str = br.readLine())!=null){
@@ -61,12 +62,20 @@ public class CountMostImport {
                     }
                 }
             }
-            br.close();
+
 
         }catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }catch (IOException ioe){
             ioe.printStackTrace();
+        }finally {
+            if(br!=null){
+                try{
+                    br.close();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
         }
     }
     /*

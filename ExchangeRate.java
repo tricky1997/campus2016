@@ -10,6 +10,7 @@ import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
+import org.eclipse.jetty.websocket.api.WebSocketException;
 
 
 /**
@@ -147,14 +148,22 @@ public class ExchangeRate {
      */
     public HtmlPage getHtmlPage(String url){
         HtmlPage page = null ;
+        WebClient webClient = null ;
         try {
-            WebClient webClient = new WebClient();
+            webClient = new WebClient();
             webClient.getOptions().setCssEnabled(true);
             webClient.getOptions().setJavaScriptEnabled(true);
             page = webClient.getPage(url);
-            webClient.close();
         }catch (IOException e){
             e.printStackTrace();
+        }finally {
+            if(webClient!=null){
+                try {
+                    webClient.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
         }
         return page ;
     }
