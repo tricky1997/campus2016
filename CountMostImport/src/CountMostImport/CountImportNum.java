@@ -10,19 +10,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Í³¼ÆjavaÎÄ¼şÖĞ£¬²»Í¬ÀàµÄimport´ÎÊı£¬²¢µÃµ½´ÎÊı×î¶àµÄ10¸ö
+ * ç»Ÿè®¡javaæ–‡ä»¶ä¸­ï¼Œä¸åŒç±»çš„importæ¬¡æ•°ï¼Œå¹¶å¾—åˆ°æ¬¡æ•°æœ€å¤šçš„10ä¸ª
  */
 
 public class CountImportNum {
 	Map<String, Integer> m_CountImportMap = new HashMap<>();
 
 	public List<Map.Entry<String, Integer>> getMaxImportClass(List<String> javaFilesPath) {
-		CountNum(javaFilesPath);     //°ÑËùÓĞimportµÄÀàÌáÈ¡³öÀ´£¬·Åµ½m_CountImportMap
+		CountNum(javaFilesPath);     //æŠŠæ‰€æœ‰importçš„ç±»æå–å‡ºæ¥ï¼Œæ”¾åˆ°m_CountImportMap
 		
-		 /* ¶ÔÃ¿¸öÎÄ¼şµÄimport´ÎÊı½øĞĞÅÅĞò */
+		 /* å¯¹æ¯ä¸ªæ–‡ä»¶çš„importæ¬¡æ•°è¿›è¡Œæ’åº */
         List<Map.Entry<String, Integer>> list
                 = new ArrayList<>(m_CountImportMap.entrySet());
-        // ´´½¨±È½ÏÆ÷
+        // åˆ›å»ºæ¯”è¾ƒå™¨
                 list.sort(new Comparator<Map.Entry<String, Integer>>() {
                     @Override
                     public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
@@ -37,34 +37,34 @@ return list;
 	}
 
 	/**
-	 * Í³¼ÆJavaÎÄ¼şÓĞĞ§ĞĞÊı
-	 * @param javaFilesPath  ËùÓĞJavaÎÄ¼şµÄÂ·¾¶
+	 * ç»Ÿè®¡Javaæ–‡ä»¶æœ‰æ•ˆè¡Œæ•°
+	 * @param javaFilesPath  æ‰€æœ‰Javaæ–‡ä»¶çš„è·¯å¾„
 	 */
 	public void CountNum(List<String> javaFilesPath) {
-		//±éÀúÃ¿¸öjavaÎÄ¼ş
+		//éå†æ¯ä¸ªjavaæ–‡ä»¶
 		for (String path : javaFilesPath) {
 			BufferedReader br = null;
 			try {
-				br = new BufferedReader(new FileReader(path));     //¶ÁÈ¡µ±Ç°javaÎÄ¼şÄÚÈİ
+				br = new BufferedReader(new FileReader(path));     //è¯»å–å½“å‰javaæ–‡ä»¶å†…å®¹
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 			try {
 				while (br.ready()) {
-					String line = br.readLine().trim(); // ¶ÁÈ¡Ò»ĞĞ×Ö·û
+					String line = br.readLine().trim(); // è¯»å–ä¸€è¡Œå­—ç¬¦
 
-					if (line.startsWith("public") || line.startsWith("class")) // ³öÏÖÀà£¬Í£Ö¹¶ÁÈë
+					if (line.startsWith("public") || line.startsWith("class")) // å‡ºç°ç±»ï¼Œåœæ­¢è¯»å…¥
 						break;
 
-					if (line.startsWith("import") && line.charAt(6) != '*'
-							&& !line.startsWith("import static")) // ´æÔÚimport²¢ÅÅ³ıimport *ºÍimport static
+					if (line.startsWith("import") && line.charAt(line.length() - 2) != '*'
+							&& !line.startsWith("import static")) // å­˜åœ¨importå¹¶æ’é™¤import *å’Œimport static
 					{
-						String className = line.substring(7, line.length() - 1);    //ÌáÈ¡ÀàÃû
-						if (m_CountImportMap.containsKey(className)) { // ÀàÃûÒÑ´æÔÚ
+						String className = line.substring(7, line.length() - 1);    //æå–ç±»å
+						if (m_CountImportMap.containsKey(className)) { // ç±»åå·²å­˜åœ¨
 							Integer val = m_CountImportMap.get(className);
-							m_CountImportMap.put(className, val + 1);    //´ÎÊı+1
+							m_CountImportMap.put(className, val + 1);    //æ¬¡æ•°+1
 						} else
-							// ²»´æÔÚÖ÷¼ü
+							// ä¸å­˜åœ¨ä¸»é”®
 							m_CountImportMap.put(className, 1);
 					}
 				}
