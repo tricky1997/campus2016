@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="KotlinJavaRuntime">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/software/htmlparser1_6/lib/htmlparser.jar!/" />
+      <root url="jar://$USER_HOME$/software/htmlparser1_6/lib/sax2.jar!/" />
+      <root url="jar://$USER_HOME$/software/htmlparser1_6/lib/htmllexer.jar!/" />
+      <root url="jar://$USER_HOME$/software/htmlparser1_6/lib/filterbuilder.jar!/" />
+      <root url="jar://$USER_HOME$/software/htmlparser1_6/lib/thumbelina.jar!/" />
+      <root url="jar://$USER_HOME$/software/htmlparser1_6/lib/junit.jar!/" />
+      <root url="jar://$USER_HOME$/software/poi-3.14/lib/log4j-1.2.17.jar!/" />
+      <root url="jar://$USER_HOME$/software/poi-3.14/lib/commons-codec-1.10.jar!/" />
+      <root url="jar://$USER_HOME$/software/poi-3.14/lib/junit-4.12.jar!/" />
+      <root url="jar://$USER_HOME$/software/poi-3.14/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-runtime.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-reflect.jar!/" />
+      <root url="jar://$USER_HOME$/software/poi-3.14/poi-3.14-20160307.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-runtime-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
