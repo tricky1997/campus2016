@@ -1,0 +1,8 @@
+
+README
+
+CountMostImport由四部分组成
+	DealWithRootDir统计目标目录下的所有.java文件
+	DealWithSingleFile处理每一个.java文件并分别记录该java文件内引用的类以及引用的包
+	DealWithPkg处理每个引用的包，并将每个包内的所有类的计数增加该包的引用计数值。
+	CountMostImport综合以上三部分统计一个目录下所有文件引用的类计数，并输出引用最多的十个类
