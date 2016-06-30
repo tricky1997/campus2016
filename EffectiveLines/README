@@ -1,0 +1,19 @@
+README
+
+
+1. EffectiveLines类包括：
+	一个构造函数Effective(String filename)，接受输入源文件的文件名作为输入，构造函数构造该类时会判断filename的有效性。
+	一个功能函数isValue(String aLine)，输入为一个代码行，该函数判断该代码行是否为有效行。
+		判断标准在下面无效行的定义中说明。
+	一个功能函数getCounts(String filename)，该函数通过BufferedReader遍历所有代码行，并通过isValue判断是否为有效行，并输出输入源文件的有效行数。
+	一个展示函数showFunction()，用于展示该项目功能，并在main()函数中调用该展示函数。
+
+2. 无效行的定义
+		1、无任何字符的空行
+		2、全部为空格的行
+		3、以/开头的行的注释行
+		4、一段空格+//开头的行的注释行
+   通过正则表达式判断是否一个代码行是否符合无效行规则。
+
+3. 测试数据
+	在项目目录的test文件夹中存放一个UsedForTest.java文件用于showFunction()函数展示程序功能。

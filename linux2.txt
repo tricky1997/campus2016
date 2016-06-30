@@ -1,0 +1,7 @@
+
+Q:
+linux下如何从本地目录dir拷贝一个文件到目标机obj-machine的/temp目录下？
+请写出具体语句。（作业命名：linux2）
+
+S:
+scp /dri/filename user@ip:/temp filename

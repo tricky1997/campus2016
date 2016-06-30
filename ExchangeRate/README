@@ -1,0 +1,31 @@
+README
+
+
+
+1、项目结构
+	ExchangeRate项目有两个类组成。
+		GetHtml类用于建立Http链接获取目标url的html源码。
+		RecordExchangeRate类获取所有目标url，然后遍历所有url并解析其html获取汇率信息，并保存在excel文件。
+
+2、项目依赖
+	2.1 apache的http项目的jar包httpcore-4.4.5.jar和httpclient-4.5.2.jar用于建立http链接
+			org.apache.http.*;
+			org.apache.http.client.*;
+			org.apache.http.impl.*;
+	2.2 jdk自带的javascript引擎用于运行js代码
+			javax.script.*;
+	2.3 jsoup来解析html代码
+			org.jsoup.*;
+	2.4 jxl用于处理excel读写
+			org.jxl.*;
+
+3、GetHtml类
+	目标url的http访问由三部分组成，
+	第一次访问服务器返回一段用于生成cookie的js代码。
+	第二次带着生成的cookie访问，服务器返回一个新的cookie，并重定向到当前url
+	第三次带着前两次生成的cookie访问，服务器返回目标url
+
+4、RecordExchangeRate类
+	RecordExchangeRate类先访问目录url，获取存放信息的所有目标url存放在一个Queue中。
+	然后遍历该Queue并通过GetHtml类获取所有目标url的html。
+	然后解析该html获取信息并存放在一个excel文件中。
