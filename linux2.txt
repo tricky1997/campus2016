@@ -1,0 +1,5 @@
+#Linux远程文件传输
+#命令格式： 
+#scp local_file remote_username@remote_ip:remote_folder 
+
+scp dir1/Test root@l-test.dev.cn1:/tmp
