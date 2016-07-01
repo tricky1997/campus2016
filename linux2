@@ -1,0 +1,4 @@
+//本地目录dir1拷贝一个文件到目标机l-test.dev.cn1的/tmp目录下。
+//使用scp命令进行远程拷贝
+
+scp /dir1/testfile remote-user@l-test.dev.cn1/tmp
