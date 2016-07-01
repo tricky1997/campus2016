@@ -1,0 +1,6 @@
+#假设日志格式为：
+#118.78.199.98 &ndash; - [09/Jan/2010:00:59:59 +0800] GET /Public/Css/index.css HTTP/1.1&Prime; 304 ...
+#提取第一列，然后upiq -c 合并重复的行，并记录重复次数，最后sort倒叙排序并筛选前10个
+#为了程序的扩展性，使用通配符*
+
+awk '{print $1}' *access_log*.txt |sort |uniq -c|sort -nr|head -n 10
