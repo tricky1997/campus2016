@@ -1,4 +1,0 @@
-/*
- *使用scp命令进行远程拷贝
-/*
-scp /dir1/testfile remote-user@l-test.dev.cn1/tmp
