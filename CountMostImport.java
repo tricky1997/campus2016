@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.Scanner;
 
 /*
- * ¿¼ÂÇÒ»ĞĞ¿ÉÄÜ¶à¸öimportÓï¾äµÄÇé¿ö£º
- * ÀıÈç£º import java.io.File; import java.util.List;
- * ¿¼ÂÇÒ»¸öimportÓï¾äÖĞ¼ä»»ĞĞµÄÇé¿ö£º
- * ÀıÈç£º import java.
+ * è€ƒè™‘ä¸€è¡Œå¯èƒ½å¤šä¸ªimportè¯­å¥çš„æƒ…å†µï¼š
+ * ä¾‹å¦‚ï¼š import java.io.File; import java.util.List;
+ * è€ƒè™‘ä¸€ä¸ªimportè¯­å¥ä¸­é—´æ¢è¡Œçš„æƒ…å†µï¼š
+ * ä¾‹å¦‚ï¼š import java.
  * io.File;
- * ¿¼ÂÇ¿ÉÄÜ³öÏÖµÄ×¢ÊÍ
- * Ê¹ÓÃHashMap´æ´¢
+ * è€ƒè™‘å¯èƒ½å‡ºç°çš„æ³¨é‡Š
+ * ä½¿ç”¨HashMapå­˜å‚¨
  */
 
 public class CountMostImport {
@@ -27,18 +27,26 @@ public class CountMostImport {
 		map = new HashMap<String, Integer>();
 	}
 	
-	public void count_import(String filepath){
+	public void traveFile(String filepath){
 		File in = new File(filepath);
 		if(in.isDirectory()){
 			File files[] = in.listFiles();
-			for(int i = 0; i < files.length; ++i){
-				if(files[i].getName().endsWith(".java")){
-					BufferedReader br = null;
-					String total = "";
-					String str = null;
-					try{
-					br = new BufferedReader(new InputStreamReader(new FileInputStream(files[i])));
-					while((str = br.readLine()) != null  ){
+			for(File f : files){
+				traveFile(f.getAbsolutePath());
+			}
+		}
+		if(in.isFile())
+			count_import(in.getAbsolutePath());
+	}
+	public void count_import(String filepath){
+		File in = new File(filepath);
+		if(in.getName().endsWith(".java")){
+			BufferedReader br = null;
+			String total = "";
+			String str = null;
+			try{
+				br = new BufferedReader(new InputStreamReader(new FileInputStream(in)));
+				while((str = br.readLine()) != null  ){
 						if(str.contains("{")){
 							String tmp = str.split("\\{")[0];
 							String tmp1 = tmp.split(";")[0];
@@ -65,11 +73,7 @@ public class CountMostImport {
 						e.printStackTrace();
 					}
 				}
-			}
-		}
-		else{
-			System.out.println("ÊäÈëµÄ²»ÊÇÒ»¸öÄ¿Â¼");
-		}
+			
 	}
 	
 	public void print_top_10(){
@@ -96,10 +100,10 @@ public class CountMostImport {
 	
 	public static void main(String args[]) throws IOException{
 		CountMostImport c = new CountMostImport();
-		System.out.println("ÇëÊäÈëÄ¿Â¼¾ø¶ÔÂ·¾¶£º");
+		System.out.println("è¯·è¾“å…¥ç›®å½•ç»å¯¹è·¯å¾„ï¼š");
 		Scanner s = new Scanner(System.in);
 		String path = s.next();
-		c.count_import(path);
+		c.traveFile(path);
 		s.close();
 		c.print_top_10();
 	}
