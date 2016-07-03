@@ -1,0 +1,110 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Created by Administrator on 2016/6/18.
+ */
+
+public class CountMostImportMain {
+    public static final void main(String[] args)
+    {
+        File dir = new File("F:\\IdeaProjects\\EffectiveLines\\src");
+        //统计所有.java文件中被引用次数最多的类，忽略java.io.*类型的统计
+        ArrayList<KeyValue> classList = new <KeyValue>ArrayList();   //存储类和被引用次数
+        TraversalFile(dir, classList);
+        //对列表元素进行降序排序,输出数量前十的类，类数目不超过10，按照实际数目输出
+        Collections.sort(classList,new SortByCount());
+        int top10=0;
+        System.out.println("类型总数为"+classList.size()+" ,排名前十为：");
+        for(KeyValue ke:classList) {
+            if(!ke.classname.equals("java.io.*")&&top10<10) {
+                top10++;
+                System.out.println("num , value ,count ==" + top10+": " + ke.classname + "  " + ke.classNum);
+            }
+        }
+    }
+    //遍历目录dir下所有件，对引用的类进行统计并保存到列表中
+    public static void TraversalFile(File dir, List<KeyValue> clslist)
+    {
+        File[] templist=dir.listFiles();
+        for(int i=0;i<templist.length;i++)
+        {
+            if(templist[i].isDirectory()) {
+                TraversalFile(templist[i], clslist);
+            }
+            if(templist[i].isFile()) {
+                GetClass(templist[i].getPath(), clslist);
+            }
+        }
+
+    }
+    //获取该文件对象中引用的类，进行统计和保存
+    public static void GetClass(String path,List<KeyValue> clslist)
+    {
+        System.out.println("   " + path);
+        File  file  = new File(path);
+        BufferedReader read =null;
+        try{
+            read= new BufferedReader(new FileReader(file));
+            String line;
+            //默认import均集中文件开头部分，如果遍历过程中发现某行语句不是以import开头，则认为该文件import结束
+            while((line=read.readLine())!=null)
+            {
+                line = line.trim();
+                if((line.length()>=6&&line.substring(0,6).equals("import")))
+                {
+                    String classname = line.substring(6,line.length()-1);  //去掉最后分号
+                    classname = classname.trim();                           //去掉前面的空格
+                    System.out.println("   " + classname);
+                    Boolean findtag=false;
+                    for(int i=0;i<clslist.size();i++) {
+                        //类已经存在数组中，个数统计+1；否则添加为新类
+                        if (classname.equals(clslist.get(i).classname)) {
+                            clslist.get(i).classNum++;
+                            findtag = true;
+                        }
+                    }
+                    if(findtag!=true){
+                        KeyValue temp = new KeyValue();
+                        temp.classname=classname;
+                        temp.classNum=1;
+                        clslist.add(temp);
+                    }
+                }
+                
+
+            }
+        }catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
+/**
+ * Created by Administrator on 2016/6/19.
+ */
+public class KeyValue {
+    public  String classname;
+    public int classNum;
+    public KeyValue()
+    {
+        classname=null;
+        classNum=1;
+    }
+}
+/**
+ * Created by Administrator on 2016/7/1.
+ */
+public class SortByCount implements java.util.Comparator{
+    public int compare(Object o1, Object o2) {
+        KeyValue s1 = (KeyValue) o1;
+        KeyValue s2 = (KeyValue) o2;
+        if (s1.classNum > s2.classNum)
+            return 1;
+        if (s1.classNum ==s2.classNum)
+            return 0;
+        else return -1;
+    }
+}
