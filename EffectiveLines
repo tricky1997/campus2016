@@ -1,0 +1,43 @@
+import java.io.*;
+
+/**
+ * Created by Administrator on 2016/6/6.
+ */
+public class EffectiveLines {
+    public static final void main(String[] args)
+    {
+        String filename = "F:\\IdeaProjects\\src\\test\\testfile.java";
+        ReadFileByLine(filename);
+
+    }
+    //get the number of effective lines in file
+    public static int  ReadFileByLine(String filename)
+    {
+        File file = new File(filename);
+        int countN = 0;
+        BufferedReader read =null;
+        try{
+            read= new BufferedReader(new FileReader(file));
+            String line;
+            while((line=read.readLine())!=null)
+            {
+                line = line.trim();
+               // String str = "\n" ;
+              //  str=str.trim();
+                //  System.out.println("str:"+str.length());
+                if(line.length()==0||(line.length()>=2&&line.substring(0,2).equals("//")))
+                {
+                    continue;
+                }
+                else
+                    countN++;
+            }
+
+        }catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println("effective lines number:"+countN);
+        return countN;
+    }
+}
