@@ -1,0 +1,1 @@
+﻿scp dir1/file username@1-test.dev.cn1:/tmp
