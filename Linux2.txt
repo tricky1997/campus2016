@@ -1,0 +1,2 @@
+scp /dir1 root@l-test.dev.cn1:/home/temp
+然后提示输入目标主机l-test.dev.cn1的密码就可以进行复制。
