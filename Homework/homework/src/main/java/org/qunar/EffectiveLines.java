@@ -28,6 +28,7 @@ public class EffectiveLines {
             e.printStackTrace();
         }
     }
+    //  /*...*/单独成行、//和空行
     private static boolean isEmptyOrSingleNote(){
         if (line.equals("")) return true;
         if (line.charAt(0) == '/' && line.charAt(1) == '/') return true;
@@ -35,6 +36,7 @@ public class EffectiveLines {
                 line.charAt(line.length()-2) == '*' && line.charAt(line.length()-1) == '/') return true;
         return false;
     }
+    //  /*...*/占多行
     private static boolean isOneOfNotes(){
         int prefixs = countNote();
         int currentPres = prefixs+notePrefix;
