@@ -24,12 +24,14 @@ public class CountMostImport {
             System.out.println(importCounts.get(result[i]));
         }
     }
+    //遍历指定的文件夹，提取其中所有java文件中包含的import类
     private static void traversal(){
         File dir = new File("./homework/src/main/java/org/qunar");
         List<File> files = new ArrayList<File>();
         files = traversalFile(dir);
         imports = traversalImports(files);
     }
+    //遍历，提取所有java文件
     private static List<File> traversalFile(File dir){
         List<File> files = new ArrayList<File>();
         if (dir.isFile() && dir.getName().endsWith(".java")) {
@@ -45,6 +47,7 @@ public class CountMostImport {
         }
         return files;
     }
+    //提取所有import类
     private static List<String> traversalImports(List<File> files){
         List<String> imports = new ArrayList<String>();
         for (int i=0;i<files.size();i++){
@@ -67,6 +70,7 @@ public class CountMostImport {
         }
         return imports;
     }
+    //统计import类的出现次数
     private static void insertHashMap(){
         for (int i=0;i<imports.size();i++){
             if (!importCounts.containsKey(imports.get(i)))
@@ -75,6 +79,7 @@ public class CountMostImport {
         }
         importCounts.put("",0);
     }
+    //找到出现次数最多的10个import类
     private static void setResult(){
         for (int i=0;i<10;i++){
             result[i] = "";
