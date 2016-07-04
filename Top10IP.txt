@@ -1,0 +1,10 @@
+cat access.log|awk '{print $1}' access.log|sort |uniq -c|sort -nr|head -n 10
+
+cat 浏览access.log日志文件；
+awk 是非常棒的数据处理工具，其可以把每条日志中的IP获取；
+
+uniq -c 合并重复行，并记录重复次数。
+
+head -n 10 选出前十；
+
+sort -nr 按照数字进行倒叙排序。
