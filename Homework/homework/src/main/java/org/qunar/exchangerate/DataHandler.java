@@ -18,7 +18,9 @@ import jxl.write.WriteException;
 public class DataHandler {
     private List<Double[]> values = null;
     private List<String> dates = null;
+    //每一天的数据都含有一个mark1
     private final static String mark1="<tr class=\"first\" onMouseover='this.style.backgroundColor=\"#fffcbf\"' onMouseout='this.style.backgroundColor=\"#eff6fe\"'>";
+    //每一条数据都对应一个mark2
     private final static String mark2="<td width=\"8%\" align=\"center\"  >";
     public static DataHandler getInstance(String html){
         DataHandler dh = new DataHandler();
@@ -32,13 +34,16 @@ public class DataHandler {
     private void format(String html){
         String subHtml = html;
         int index=0;
+        //以天为单位，每个循环是一天
         while ((index=subHtml.indexOf(mark1))!=-1){
             subHtml = subHtml.substring(index+mark1.length());
             int startIndex = subHtml.indexOf(mark2)+mark2.length();
             int endIndex =subHtml.indexOf("&nbsp",startIndex);
+            //date是String类型的日期
             String date = subHtml.substring(startIndex,endIndex).trim();
             dates.add(date);
             subHtml = subHtml.substring(endIndex+"&nbsp".length());
+            //oneValue表示美元、欧元和港币的值
             Double[] oneValue = new Double[3];
             for (int i=0;i<4;i++){
                 startIndex = subHtml.indexOf(mark2)+mark2.length();
