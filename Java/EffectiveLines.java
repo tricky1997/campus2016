@@ -6,24 +6,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by dan on 2016/6/21.
+ * @author wudan
+ * @version 0.1
+ * @since 2016-06-21
  */
 public class EffectiveLines {
-    /*
-    *   called every loop
+    /**
+    *  @param line every line of a file
+    *  @param pattern patterns for comment(stored in arraylist)
+    *  @return true or false(if the line is comment line)
     */
     int isNonsenceLine(String line,ArrayList<Pattern> pattern) {
 
-        for(int i = 0;i < pattern.size();++i) {
+        for (int i = 0; i < pattern.size(); ++i) {
             Matcher m = pattern.get(i).matcher(line);
-            if(m.find()) return (1 + i);
+            if (m.find()) return (1 + i);
         }
         return 0;
     }
 
-    /*
-    *   {@author:wudan}
-    *   just call once
+    /**
+    *   @param pattern regular expression of all comment line
+    *   @return patterns of all comments
     */
     ArrayList<Pattern> getPattern(ArrayList<String> pattern){
         ArrayList<Pattern> res = new ArrayList<>();
@@ -34,15 +38,19 @@ public class EffectiveLines {
         return res;
     }
 
+    /**
+     * main function
+     * @param args command line arguments
+     */
     public static void main(String args[]){
         // String to be scanned to find the pattern.
         String line;
 
-        // String pattern = "^\\s*/[*](.*)[*]/\\s*$";
-        // String test = "T.{0,5}s";//match a word
-
-        String emptyLine = "^\\s*$";//match space line
+        //match empty line(all space)
+        String emptyLine = "^\\s*$";
+        //match single line comment
         String singleLineComment = "(\\s*/[*](.*)[*]/\\s*$)|(^\\s*//)";//match a comment line
+
         //match "/* bla bla"
         String blockCommentStart = "^\\s*/[*][^([*]/)]*\\s*$";
         //match "bla bla */"
@@ -78,10 +86,8 @@ public class EffectiveLines {
                 switch (dan.isNonsenceLine(line,patterns)) {
                     case 0: {
                         if(blockCommentStartFlag == false) {
-                            //if(blockCommentStartFlag == false) {
-                                validLineCount++;
-                                //System.out.println(line);
-                            //}
+                            validLineCount++;
+                            //System.out.println(line);
                         }
                         break;
                     }
@@ -92,12 +98,12 @@ public class EffectiveLines {
                         break;
                     }
                     case 3: {
-                        //for block comment (currently not used)
+                        //start of block comments
                         blockCommentStartFlag = true;
                         break;
                     }
                     case 4: {
-                        //for block comment (currently not used)
+                        //end of block comments
                         blockCommentStartFlag = false;
                         break;
                     }
