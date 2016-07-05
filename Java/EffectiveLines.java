@@ -78,8 +78,10 @@ public class EffectiveLines {
                 switch (dan.isNonsenceLine(line,patterns)) {
                     case 0: {
                         if(blockCommentStartFlag == false) {
-                            validLineCount++;
-                            //System.out.println(line);
+                            //if(blockCommentStartFlag == false) {
+                                validLineCount++;
+                                //System.out.println(line);
+                            //}
                         }
                         break;
                     }
@@ -90,11 +92,14 @@ public class EffectiveLines {
                         break;
                     }
                     case 3: {
+                        //for block comment (currently not used)
                         blockCommentStartFlag = true;
                         break;
                     }
                     case 4: {
+                        //for block comment (currently not used)
                         blockCommentStartFlag = false;
+                        break;
                     }
                     default :{}
                 }
