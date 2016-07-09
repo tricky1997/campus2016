@@ -1,0 +1,109 @@
+package com.qunar;
+import java.io.*;
+import java.util.*;
+/**
+ * Created by yanming.yan on 16-7-9.
+ */
+public class CountMostImport {
+
+    public static  List<String> fileList = new ArrayList<String>();     //记录目录下所有的文件
+
+    public static void main(String [] args){
+
+        System.out.println("请输入项目目录的绝对路径:");
+        Scanner sca = new Scanner(System.in);
+        CountMostImport cmi = new CountMostImport();
+        List<String> fileList  = cmi.getFileList(sca.nextLine());
+        try {
+            List<String> results = cmi.getResust(fileList);
+            System.out.println("前十个被import最多的类为：");
+            for(int i=0;i<results.size();i++){
+                System.out.println(results.get(i));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //统计所有的文件
+    public List<String> getFileList(String dir)
+    {
+        File f = new File(dir);
+        //List<String> fileList = new ArrayList<String>();
+        if(f.isDirectory())
+        {
+            File [] fs = f.listFiles();
+            for(File nextFile: fs)
+            {
+                getFileList(nextFile.getAbsolutePath());
+            }
+
+        }
+        else
+        {
+            fileList.add(f.getAbsolutePath());
+        }
+        return fileList;
+    }
+
+    //得到最终的结果
+    public List<String> getResust(List<String> list) throws IOException {
+        List<String> fileList = list;
+        Map<String,Integer> countMap = new HashMap<String,Integer>();
+
+        for(int i=0;i<list.size();i++){
+            InputStream input = new FileInputStream(fileList.get(i));
+            InputStreamReader reader = new InputStreamReader(input,"utf-8");
+            BufferedReader readBuf = new BufferedReader(new InputStreamReader(input));
+            String line = null;
+            //import类的数量计算以及新类添加
+            try {
+                while((line = readBuf.readLine()) !=null){
+                    line.trim();
+                    if(line.startsWith("import")){
+                        int indexOfSpace = line.indexOf(" ");
+                        int indexOfSymbol = line.indexOf(";");
+                        String className = line.substring(indexOfSpace+1,indexOfSymbol);
+                        if(!countMap.containsKey(className)){
+                            countMap.put(className, new Integer(1));
+                        }else{
+                            countMap.put(className,countMap.get(className)+1);
+                        }
+
+                    }
+
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally{
+                //关闭文件流
+                try{
+                    if(readBuf != null)
+                        readBuf.close();
+                    if(reader != null)
+                        reader.close();
+                    if(input !=null)
+                        input.close();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
+        TreeMap<String,Integer> sorted_map = new TreeMap<String,Integer>(countMap);
+        sorted_map.putAll(countMap);
+        List<String> results = new ArrayList<String>();
+        int index = 0;
+        Iterator iter = sorted_map.entrySet().iterator();
+        while(iter.hasNext() && index < 10){
+            Map.Entry entry =(Map.Entry)iter.next();
+            results.add((String)entry.getKey());
+            index++;
+        }
+        return results;
+    }
+
+
+}
