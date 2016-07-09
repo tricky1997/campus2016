@@ -1,0 +1,1 @@
+cat * | sort | uniq -c | sort | tail -10
